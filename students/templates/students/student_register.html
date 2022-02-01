@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Student Register
+
+{% endblock title %}
+
+{% block content %}
+
+    <form method="POST" class="sign-up-form" action="">
+        {% csrf_token %}
+
+        <div class="mb-3">
+
+            <label for="username" class="form-label">{{ form.username.label }}</label>
+            <div class="form-control" style="border: 0px !important;">{{ form.username }}</div>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label for="email" class="form-label">{{ form.email.label }}</label>
+            <div class="form-control" style="border: 0px !important;">{{ form.email }}</div>
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label for="password1" class="form-label">{{ form.password1.label }}</label>
+            <div class="form-control" style="border: 0px !important;">{{ form.password1 }}</div>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label for="password2" class="form-label">{{ form.password2.label }}</label>
+            <div class="form-control" style="border: 0px !important;">{{ form.password2 }}</div>
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+
+    </form>
+
+{% endblock content %}
+
+    <!-- <h1>STUDENT REGISTER</h1>
+
+    <form method="POST" action="">
+
+        {% csrf_token %}  
+
+        {% for field in form %}
+            <p>{{ field.label }}
+            {{ field }}</p>
+        {% endfor %}
+
+        <input type="submit" name="Create Student User">
+
+    </form> -->
+
+</body>
+</html>
