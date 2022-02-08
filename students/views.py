@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm
+from django.contrib.auth.models import User
 
 from django.contrib.auth import authenticate, login, logout
 
@@ -13,10 +14,11 @@ def student_register(request):
     form = CreateUserForm()
 
     if request.method == "POST":
-        form = CreateUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('student_login')
+        user = User()
+        user.username = request.POST.get('username')
+        user.email = request.POST.get('email')
+        user.set_password(request.POST.get('password'))
+        user.save()
 
     context = {'form':form}
     return render(request, 'students/student_register.html', context)
