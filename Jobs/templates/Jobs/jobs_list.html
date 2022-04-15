@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Job List
+{% endblock title %}
+
+{% block content %}
+    <div style="background-color: transparent !important;" class="jumbotron">
+        <div class="container">
+            <form method="get">
+                {% for item in filter.all %}
+                    {{ item }}
+                {% endfor %}
+                <button class="btn btn-primary" type="submit">Filter</button>
+            </form>
+            <table class = "table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Department</th>
+                    <th>Deadline</th>
+                </tr>
+            </thead>
+            {% csrf_token %} {% for i in jobs %}
+                    <tr>
+                        <td><a href="{% url 'detail' i.id %}">{{ i.name }}</a></td>
+                        <td>{{ i.short_desc }}...</td>
+                        <td>{{ i.department }}</td>
+                        <td>{{ i.deadline }}</td>
+                    </tr>
+            {% endfor %}
+        </table>
+        </div>
+    </div>
+{% endblock content %}

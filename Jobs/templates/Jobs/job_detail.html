@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ job.name }}
+{% endblock title %}
+
+{% block content %}
+    
+    <div class="jumbotron">
+        <div class="container">
+            <h2>{{ job.name }} - {{ job.department }}</h2>
+            <hr>
+            <h5>Job Description</h5>
+            <p>{{ job.description|linebreaks }}</p>
+            <p class="font-italic" style="color: red;">Dealine to Apply: {{ job.deadline }}</p>
+            <a href="{% url 'apply' job.id %}"><button type="button" class="btn btn-primary" style="margin-top: 0 !important;">Apply Now!</button></a>
+        </div>
+    </div>
+
+{% endblock content %}
